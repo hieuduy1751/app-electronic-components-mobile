@@ -13,22 +13,42 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.createURL('/')],
   config: {
     screens: {
-      Root: {
+      Home: {
         screens: {
-          TabOne: {
+          Root: {
             screens: {
-              TabOneScreen: 'one',
+              Landing: {
+                screens: {
+                  Landing: 'landing',
+                },
+              },
+              Category: {
+                screens: {
+                  Category: 'category',
+                },
+              },
+              Account: {
+                screens: {
+                  Account: 'account',
+                }
+              },
+              Cart: {
+                screens: {
+                  Cart: 'cart'
+                }
+              }
             },
           },
-          TabTwo: {
-            screens: {
-              TabTwoScreen: 'two',
-            },
-          },
-        },
+        }
       },
       Modal: 'modal',
       NotFound: '*',
+      Auth: {
+        screens: {
+          Login: 'login',
+          Register: 'register',
+        }
+      }
     },
   },
 };

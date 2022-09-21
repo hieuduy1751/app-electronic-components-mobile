@@ -12,18 +12,22 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import Login from '../screens/Auth/Login';
+import Register from '../screens/Auth/Register';
+import Account from '../screens/Home/Account';
+import Cart from '../screens/Home/Cart';
+import Category from '../screens/Home/Category';
+import Landing from '../screens/Home/Landing';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import { AuthStackParamList, HomeStackParamList, RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      theme={DefaultTheme}>
       <RootNavigator />
     </NavigationContainer>
   );
@@ -33,17 +37,17 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
  * A root stack navigator is often used for displaying modals on top of all other content.
  * https://reactnavigation.org/docs/modal
  */
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Home = createNativeStackNavigator<HomeStackParamList>();
 
-function RootNavigator() {
+function HomeNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
-    </Stack.Navigator>
+    <Home.Navigator>
+      <Home.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Home.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Home.Group screenOptions={{ presentation: 'modal' }}>
+        <Home.Screen name="Modal" component={ModalScreen} />
+      </Home.Group>
+    </Home.Navigator>
   );
 }
 
@@ -58,42 +62,72 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Landing"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
+        name="Landing"
+        component={Landing}
+        options={{
+          title: 'Landing',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
-        })}
+        }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Category"
+        component={Category}
         options={{
-          title: 'Tab Two',
+          title: 'Category',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Account"
+        component={Account}
+        options={{
+          title: 'Account',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Cart"
+        component={Cart}
+        options={{
+          title: 'Cart',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
     </BottomTab.Navigator>
   );
+}
+
+const Root = createNativeStackNavigator<RootStackParamList>();
+
+const RootNavigator = () => {
+  return (
+    <Root.Navigator initialRouteName="Auth" screenOptions={{
+      headerTransparent: true,
+      headerShown: false
+    }}>
+      <Root.Screen name="Auth" component={AuthNavigator}></Root.Screen>
+      <Root.Screen name="Home" component={HomeNavigator}></Root.Screen>
+    </Root.Navigator>
+  )
+}
+
+const Auth = createNativeStackNavigator<AuthStackParamList>();
+
+const AuthNavigator = () => {
+  return (
+    <Auth.Navigator initialRouteName="Login" screenOptions={{
+      headerTransparent: true,
+      headerShown: false
+    }}>
+      <Auth.Screen name="Login" component={Login} />
+      <Auth.Screen name="Register" component={Register} />
+    </Auth.Navigator>
+  )
 }
 
 /**
