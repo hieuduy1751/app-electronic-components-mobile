@@ -46,6 +46,7 @@ export type HomeStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
+  ProductDetail: undefined;
 }
 
 export type LandingStackParamList = {
