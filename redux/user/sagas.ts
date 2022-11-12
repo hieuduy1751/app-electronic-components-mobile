@@ -1,8 +1,6 @@
 import { Alert } from "react-native";
 import { all, call, put, takeEvery } from "redux-saga/effects";
-// import { login, register } from "../../services/authService";
-import storageService from "../../services/storage-service";
-// import { getMe } from "../../services/userService";
+import { login, register } from "../../services/user-service";
 import actions from "./actions";
 
 export function* LOGIN({ payload }: any): any {
@@ -13,52 +11,24 @@ export function* LOGIN({ payload }: any): any {
     }
   })
   const res = yield call(login, payload.account)
-  if (res?.token) {
-    storageService.set('token', res.token)
+  if (res) {
     yield put({
-      type: actions.GET_CURRENT_USER
+      type: actions.SET_STATE,
+      payload: {
+        loading: false,
+        data: res
+      }
     })
+    Alert.alert('Login successful!', 'Welcome to our app!')
     if (payload.callback) yield call(payload.callback)
-  } else if (res?.error) {
-    yield put({
-      type: actions.SET_STATE,
-      payload: {
-        loading: false
-      }
-    })
-    Alert.alert('Login failed!', res?.message[0] || 'Something went wrong!')
-  }
-}
-
-export function* GET_CURRENT_USER({ payload }: any): any {
-  yield put({
-    type: actions.SET_STATE,
-    payload: {
-      loading: true
-    }
-  })
-  const user = yield call(getMe)
-  if (user?._id) {
-    yield put({
-      type: actions.SET_STATE,
-      payload: {
-        data: user,
-        loading: false
-      }
-    })
-    yield put({
-      type: conversationActions.GET_CONVERSATIONS
-    })
-    if (payload?.callback) yield call(payload.callback)
   } else {
-    yield call(storageService.remove, 'token')
     yield put({
       type: actions.SET_STATE,
       payload: {
         loading: false
       }
     })
-    Alert.alert('Fail', 'Cannot get current user')
+    Alert.alert('Login failed!', res?.message[0] || 'Username or password incorrect!')
   }
 }
 
@@ -70,7 +40,7 @@ export function* REGISTER({ payload }: any): any {
     }
   })
   const status = yield call(register, payload.user)
-  if (status?.userId) {
+  if (status) {
     yield put({
       type: actions.SET_STATE,
       payload: {
@@ -97,7 +67,6 @@ export function* LOGOUT({ payload }: any) {
       loading: true
     }
   })
-  yield call(storageService.remove, 'token')
   yield put({
     type: actions.SET_STATE,
     payload: {
@@ -108,24 +77,10 @@ export function* LOGOUT({ payload }: any) {
   if (payload.callback) yield call(payload.callback)
 }
 
-export function* AUTO_LOGIN({ payload }: any): any {
-  const token = yield call(storageService.get, 'token')
-  if (token) {
-    yield put({
-      type: actions.GET_CURRENT_USER,
-      payload: {
-        callback: payload.callback || null
-      }
-    })
-  }
-}
-
 export default function* root() {
   yield all([
     takeEvery(actions.LOGIN, LOGIN),
-    takeEvery(actions.GET_CURRENT_USER, GET_CURRENT_USER),
     takeEvery(actions.REGISTER, REGISTER),
     takeEvery(actions.LOGOUT, LOGOUT),
-    takeEvery(actions.AUTO_LOGIN, AUTO_LOGIN)
   ])
 }
