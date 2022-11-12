@@ -1,73 +1,70 @@
-import React, { useState } from 'react'
-import { View, Text, Alert, StyleSheet, SafeAreaView, Image, ActivityIndicator } from 'react-native'
-import CButton from '../../../components/CButton'
-import CInput from '../../../components/CInput'
-import HideKeyboard from '../../../components/HideKeyboard'
-import GlobalStyles from '../../../constants/GlobalStyles'
+import React, { useState } from 'react';
+import {
+  View,
+  SafeAreaView,
+  Image,
+  StyleSheet,
+  Alert,
+  ActivityIndicator,
+} from 'react-native';
+import { useSelector } from 'react-redux';
+import CButton from '../../../components/CButton';
+import CInput from '../../../components/CInput';
+import HideKeyboard from '../../../components/HideKeyboard';
+import GlobalStyles from '../../../constants/GlobalStyles';
 
-const Register = ({ navigation }: any) => {
-  const [account, setAccount] = useState({
+const Register = ({ navigation }: { navigation: any }) => {
+  const [account, setAccount] = useState<{
+    username: string;
+    password: string;
+    confirmPassword: string;
+  }>({
     username: '',
     password: '',
-    confirmPassword: ''
-  })
-  const [loading, setLoading] = useState(false)
-  const icon = require('../../../assets/images/icon.png')
+    confirmPassword: '',
+  });
+  
+  const loading = useSelector((state: any) => state.user.loading);
+
+  const icon = require('../../../assets/images/icon.png');
 
   const handleRegister = () => {
-    setLoading(true)
-    if (account.password !== account.confirmPassword) {
-      setTimeout(() => {
-        Alert.alert(
-          'Error',
-          'Password does not match'
-          )
-        setLoading(false)
-      }, 1000)
-      return
-    }
-    setTimeout(() => {
-      Alert.alert(
-        'Success',
-        'Registed successful'
-      )
-      setLoading(false)
-      navigation.navigate('Login')
-    }, 1000)
-  }
+    navigation.navigate('Login')
+  };
 
   const handleLogin = () => {
-    navigation.navigate('Login')
-  }
+    navigation.navigate('Login');
+  };
 
   return (
     <SafeAreaView
       style={{
         ...GlobalStyles.container,
         ...GlobalStyles.dFlex,
-        ...GlobalStyles.centeredFlex
-      }}>
+        ...GlobalStyles.centeredFlex,
+      }}
+    >
       <HideKeyboard>
         <View style={styles.loginContainer}>
           <View style={styles.imageContainer}>
             <Image source={icon} />
           </View>
           <View style={styles.formContainer}>
-            <CInput placeholder="Username"
+            <CInput
+              placeholder="Username"
               textContentType="usename"
               value={account.username}
               onChangeText={(text: string) => {
-                setAccount((state: any) => (
-                  {
-                    username: text,
-                    password: state.password,
-                    confirmPassword: state.confirmPassword
-                  }
-                ))
+                setAccount((state: any) => ({
+                  username: text,
+                  password: state.password,
+                  confirmPassword: state.confirmPassword
+                }));
               }}
             />
-            <CInput placeholder="Password"
-              x secureTextEntry={true}
+            <CInput
+              placeholder="Password"
+              secureTextEntry={true}
               textContentType="password"
               value={account.password}
               onChangeText={(password: string) => {
@@ -75,11 +72,12 @@ const Register = ({ navigation }: any) => {
                   username: prev.username,
                   password,
                   confirmPassword: prev.confirmPassword
-                }))
+                }));
               }}
             />
-            <CInput placeholder="Confirm Password"
-              x secureTextEntry={true}
+            <CInput
+              placeholder="Confirm Password"
+              secureTextEntry={true}
               textContentType="password"
               value={account.confirmPassword}
               onChangeText={(confirmPassword: string) => {
@@ -87,21 +85,21 @@ const Register = ({ navigation }: any) => {
                   username: prev.username,
                   password: prev.password,
                   confirmPassword
-                }))
+                }));
               }}
             />
           </View>
           <View style={styles.buttonsContainer}>
             <CButton
               btnProps={{
-                onPress: handleRegister
+                onPress: handleLogin,
               }}
               title="REGISTER"
               backgroundColor="#FB8500"
             />
             <CButton
               btnProps={{
-                onPress: handleLogin
+                onPress: handleRegister,
               }}
               title="Login"
               textStyles={styles.registerText}
@@ -110,12 +108,14 @@ const Register = ({ navigation }: any) => {
           </View>
         </View>
       </HideKeyboard>
-      {loading && <View style={styles.loadingContainer}>
-        <ActivityIndicator size={'large'} color="#FB8500" />
-      </View>}
-    </SafeAreaView> 
-  )
-}
+      {loading && (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size={'large'} color="#FB8500" />
+        </View>
+      )}
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
   loginContainer: {
@@ -124,13 +124,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    height: '100%'
+    height: '100%',
   },
   imageContainer: {
-    height: '25%',
+    height: '30%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   formContainer: {
     width: '100%',
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   },
   registerText: {
     color: '#000',
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
   },
   loadingContainer: {
     position: 'absolute',
@@ -158,8 +158,8 @@ const styles = StyleSheet.create({
     height: '120%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
+    alignItems: 'center',
+  },
+});
 
-export default Register
+export default Register;

@@ -3,14 +3,12 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { ColorSchemeName } from 'react-native';
 
-import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import Login from '../screens/Auth/Login';
 import Register from '../screens/Auth/Register';
@@ -20,8 +18,10 @@ import Category from '../screens/Home/Category';
 import Landing from '../screens/Home/Landing';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { AuthStackParamList, HomeStackParamList, RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import { AuthStackParamList, HomeStackParamList, RootStackParamList, RootTabParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import { MaterialIcons } from '@expo/vector-icons';
+import ProductDetail from '../screens/Home/Landing/ProductDetail';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -44,6 +44,7 @@ function HomeNavigator() {
     <Home.Navigator>
       <Home.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Home.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Home.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }} />
       <Home.Group screenOptions={{ presentation: 'modal' }}>
         <Home.Screen name="Modal" component={ModalScreen} />
       </Home.Group>
@@ -64,13 +65,18 @@ function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="Landing"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: 'orange',
+        headerShown: false,
+        tabBarStyle: {
+          height: 90,
+          backgroundColor: '#F4FAFF'
+        },
       }}>
       <BottomTab.Screen
         name="Landing"
         component={Landing}
         options={{
-          title: 'Landing',
+          title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
       />
@@ -106,7 +112,7 @@ const Root = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   return (
-    <Root.Navigator initialRouteName="Auth" screenOptions={{
+    <Root.Navigator initialRouteName="Home" screenOptions={{
       headerTransparent: true,
       headerShown: false
     }}>
@@ -137,5 +143,5 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof MaterialIcons>['name'];
   color: string;
 }) {
-  return <MaterialIcons size={30} style={{ marginBottom: -3 }} {...props} />
+  return <MaterialIcons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
