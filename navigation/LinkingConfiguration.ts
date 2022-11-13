@@ -52,6 +52,7 @@ const linking: LinkingOptions<RootStackParamList> = {
         screens: {
           Login: 'login',
           Register: 'register',
+          Register2: 'register2',
         }
       }
     },

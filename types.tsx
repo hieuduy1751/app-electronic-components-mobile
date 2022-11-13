@@ -40,6 +40,7 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
 export type AuthStackParamList = {
   Login: undefined;
   Register: undefined;
+  Register2: undefined;
 };
 
 export type HomeStackParamList = {

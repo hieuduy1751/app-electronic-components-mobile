@@ -22,6 +22,7 @@ import { AuthStackParamList, HomeStackParamList, RootStackParamList, RootTabPara
 import LinkingConfiguration from './LinkingConfiguration';
 import { MaterialIcons } from '@expo/vector-icons';
 import ProductDetail from '../screens/Home/Landing/ProductDetail';
+import Register2 from '../screens/Auth/Register2';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -112,9 +113,9 @@ const Root = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   return (
-    <Root.Navigator initialRouteName="Home" screenOptions={{
+    <Root.Navigator initialRouteName="Auth" screenOptions={{
       headerTransparent: true,
-      headerShown: false
+      headerShown: false,
     }}>
       <Root.Screen name="Auth" component={AuthNavigator}></Root.Screen>
       <Root.Screen name="Home" component={HomeNavigator}></Root.Screen>
@@ -132,6 +133,7 @@ const AuthNavigator = () => {
     }}>
       <Auth.Screen name="Login" component={Login} />
       <Auth.Screen name="Register" component={Register} />
+      <Auth.Screen name="Register2" component={Register2} />
     </Auth.Navigator>
   )
 }
