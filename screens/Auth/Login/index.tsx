@@ -1,31 +1,32 @@
 import React, { useState } from "react"
-import { View, SafeAreaView, Image, StyleSheet, Alert, ActivityIndicator } from "react-native"
+import { View, SafeAreaView, Image, StyleSheet, Alert, ActivityIndicator, KeyboardAvoidingView, Platform } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
 import CButton from "../../../components/CButton"
 import CInput from "../../../components/CInput"
 import HideKeyboard from "../../../components/HideKeyboard"
 import GlobalStyles from "../../../constants/GlobalStyles"
+import actions from "../../../redux/user/actions"
 
 const Login = ({ navigation }: { navigation: any }) => {
+  const dispatch = useDispatch()
   const [account, setAccount] = useState<{ username: string, password: string }>({
-    username: 'admin',
-    password: 'admin'
+    username: '',
+    password: ''
   })
-  const [loading, setLoading] = useState(false)
+  const loading = useSelector((state: any) => state.user.loading)
 
   const icon = require("../../../assets/images/icon.png")
 
   const handleLogin = () => {
-    // fake login logic
-    if (account.username === 'admin' && account.password === 'admin') {
-      setLoading(true)
-      setTimeout(() => {
-        Alert.alert(
-          "Login Success",
-        )
-        setLoading(false)
-        navigation.navigate('Home', { screen: 'Landing' })
-      }, 1000)
-    }
+    dispatch({
+      type: actions.LOGIN,
+      payload: {
+        account,
+        callback: () => {
+          navigation.navigate('Home')
+        }
+      }
+    })
   }
 
   const handleRegister = () => {
@@ -41,53 +42,61 @@ const Login = ({ navigation }: { navigation: any }) => {
         ...GlobalStyles.centeredFlex
       }}>
       <HideKeyboard>
-        <View style={styles.loginContainer}>
-          <View style={styles.imageContainer}>
-            <Image source={icon} />
+        <KeyboardAvoidingView style={{
+          width: '100%',
+          height: '100%',
+        }}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+        >
+          <View style={styles.loginContainer}>
+            <View style={styles.imageContainer}>
+              <Image source={icon} />
+            </View>
+            <View style={styles.formContainer}>
+              <CInput placeholder="Username"
+                textContentType="usename"
+                value={account.username}
+                onChangeText={(text: string) => {
+                  setAccount((state: any) => (
+                    {
+                      username: text,
+                      password: state.password
+                    }
+                  ))
+                }}
+              />
+              <CInput placeholder="Password"
+                x secureTextEntry={true}
+                textContentType="password"
+                value={account.password}
+                onChangeText={(password: string) => {
+                  setAccount((prev: any) => ({
+                    username: prev.username,
+                    password
+                  }))
+                }}
+              />
+            </View>
+            <View style={styles.buttonsContainer}>
+              <CButton
+                btnProps={{
+                  onPress: handleLogin
+                }}
+                title="LOGIN"
+                backgroundColor="#FB8500"
+              />
+              <CButton
+                btnProps={{
+                  onPress: handleRegister
+                }}
+                title="Register"
+                textStyles={styles.registerText}
+                backgroundColor="transparent"
+              />
+            </View>
           </View>
-          <View style={styles.formContainer}>
-            <CInput placeholder="Username"
-              textContentType="usename"
-              value={account.username}
-              onChangeText={(text: string) => {
-                setAccount((state: any) => (
-                  {
-                    username: text,
-                    password: state.password
-                  }
-                ))
-              }}
-            />
-            <CInput placeholder="Password"
-              x secureTextEntry={true}
-              textContentType="password"
-              value={account.password}
-              onChangeText={(password: string) => {
-                setAccount((prev: any) => ({
-                  username: prev.username,
-                  password
-                }))
-              }}
-            />
-          </View>
-          <View style={styles.buttonsContainer}>
-            <CButton
-              btnProps={{
-                onPress: handleLogin
-              }}
-              title="LOGIN"
-              backgroundColor="#FB8500"
-            />
-            <CButton
-              btnProps={{
-                onPress: handleRegister
-              }}
-              title="Register"
-              textStyles={styles.registerText}
-              backgroundColor="transparent"
-            />
-          </View>
-        </View>
+        </KeyboardAvoidingView>
       </HideKeyboard>
       {loading && <View style={styles.loadingContainer}>
         <ActivityIndicator size={'large'} color="#FB8500" />

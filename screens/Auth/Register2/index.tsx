@@ -9,45 +9,52 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CButton from '../../../components/CButton';
 import CInput from '../../../components/CInput';
 import HideKeyboard from '../../../components/HideKeyboard';
 import GlobalStyles from '../../../constants/GlobalStyles';
-import { checkUsernameExists } from '../../../services/user-service';
+import actions from '../../../redux/user/actions';
 
-const Register = ({ navigation }: { navigation: any }) => {
-  const [account, setAccount] = useState<{
-    username: string;
-    password: string;
-    confirmPassword: string;
+const Register2 = ({ navigation, route }: any) => {
+  const dispatch = useDispatch();
+  const { account } = route.params;
+  const [information, setInformation] = useState<{
+    address: string;
+    phone: string;
+    email: string;
   }>({
-    username: '',
-    password: '',
-    confirmPassword: '',
+    address: '',
+    phone: '',
+    email: '',
   });
 
   const loading = useSelector((state: any) => state.user.loading);
 
   const icon = require('../../../assets/images/icon.png');
 
-  const handleRegister = async () => {
-    if (account.password !== account.confirmPassword) {
-      Alert.alert('Error', 'Password and confirm password must be the same');
-      return;
-    }
-    if (await checkUsernameExists(account.username)) {
-      Alert.alert('Error', 'Username already exists');
-      return;
-    }
-    navigation.navigate('Register2', {
-      account: account,
+  const handleRegister = () => {
+    dispatch({
+      type: actions.REGISTER,
+      payload: {
+        user: {
+          ...account,
+          information
+        },
+        callback: () => {
+          navigation.navigate('Login');
+        }
+      }
     })
   };
 
   const handleLogin = () => {
     navigation.navigate('Login');
   };
+
+  const handleBack = () => {
+    navigation.goBack();
+  }
 
   return (
     <SafeAreaView
@@ -71,40 +78,33 @@ const Register = ({ navigation }: { navigation: any }) => {
             </View>
             <View style={styles.formContainer}>
               <CInput
-                placeholder="Username"
-                textContentType="usename"
-                value={account.username}
+                placeholder="Address"
+                value={information.address}
                 onChangeText={(text: string) => {
-                  setAccount((state: any) => ({
-                    username: text,
-                    password: state.password,
-                    confirmPassword: state.confirmPassword
+                  setInformation((state: any) => ({
+                    ...state,
+                    address: text,
                   }));
                 }}
               />
               <CInput
-                placeholder="Password"
-                secureTextEntry={true}
-                textContentType="password"
-                value={account.password}
-                onChangeText={(password: string) => {
-                  setAccount((prev: any) => ({
-                    username: prev.username,
-                    password,
-                    confirmPassword: prev.confirmPassword
+                placeholder="Phone"
+                keyboardType="phone-pad"
+                value={information.phone}
+                onChangeText={(phone: string) => {
+                  setInformation((prev: any) => ({
+                    ...prev,
+                    phone
                   }));
                 }}
               />
               <CInput
-                placeholder="Confirm Password"
-                secureTextEntry={true}
-                textContentType="password"
-                value={account.confirmPassword}
-                onChangeText={(confirmPassword: string) => {
-                  setAccount((prev: any) => ({
-                    username: prev.username,
-                    password: prev.password,
-                    confirmPassword
+                placeholder="Email"
+                value={information.email}
+                onChangeText={(email: string) => {
+                  setInformation((prev: any) => ({
+                    ...prev,
+                    email
                   }));
                 }}
               />
@@ -114,8 +114,16 @@ const Register = ({ navigation }: { navigation: any }) => {
                 btnProps={{
                   onPress: handleRegister,
                 }}
-                title="NEXT"
+                title="REGISTER"
                 backgroundColor="#FB8500"
+              />
+              <CButton
+                btnProps={{
+                  onPress: handleBack,
+                }}
+                title="Back"
+                textStyles={styles.registerText}
+                backgroundColor="transparent"
               />
               <CButton
                 btnProps={{
@@ -129,14 +137,12 @@ const Register = ({ navigation }: { navigation: any }) => {
           </View>
         </KeyboardAvoidingView>
       </HideKeyboard>
-      {
-        loading && (
-          <View style={styles.loadingContainer}>
-            <ActivityIndicator size={'large'} color="#FB8500" />
-          </View>
-        )
-      }
-    </SafeAreaView >
+      {loading && (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size={'large'} color="#FB8500" />
+        </View>
+      )}
+    </SafeAreaView>
   );
 };
 
@@ -185,4 +191,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Register;
+export default Register2;

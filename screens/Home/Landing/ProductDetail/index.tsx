@@ -7,6 +7,9 @@ import {
   FlatList,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { LogBox } from 'react-native';
+// ignore all logs
+LogBox.ignoreAllLogs();
 
 const ProductDetail = ({ route }: any) => {
   const { item } = route.params;
@@ -151,7 +154,7 @@ const ProductDetail = ({ route }: any) => {
           <Text style={{
             fontWeight: 'bold',
             fontSize: 14,
-            marginBottom: 15 
+            marginBottom: 15
           }}>
             Product information
           </Text>
