@@ -264,7 +264,7 @@ const data = {
     },
     {
       name: 'Pin sạc dự phòng Innostyle PowerGo Smart Ai 10000mAh',
-      category: 'Accessory',
+      category: 'Acessories',
       price: 1200,
       brand: 'Samsung',
       color: ['Black', 'Silver', 'Gold'],
@@ -272,7 +272,7 @@ const data = {
     },
     {
       name: 'Pin sạc dự phòng UmeTravel 10000mAh TRIP10000 Quick Charge',
-      category: 'Accessory',
+      category: 'Acessories',
       price: 50,
       brand: 'Samsung',
       color: ['Black', 'Silver', 'Gold'],
@@ -370,7 +370,7 @@ const data = {
       name:'OPPO Reno7 Z 5G 8GB - 128GB',
       category:'Phones',
       price:2300,
-      brand:'Asus',
+      brand:'Oppo',
       color:['Black'],
       image:'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/2/28/637816817507294378_oppo-reno7-z-dd.jpg'
     },
@@ -378,10 +378,90 @@ const data = {
       name:'OPPO Reno6 Z 5G ',
       category:'Phones',
       price:2300,
-      brand:'Asus',
+      brand:'Oppo',
       color:['Black'],
       image:'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/7/8/637613342139496099_oppo-reno6z-dd.jpg'
     },
+  ],
+  brands: [
+    {
+      name: 'Apple',
+      image: 'https://www.freepnglogos.com/uploads/apple-logo-png/apple-logo-png-dallas-shootings-don-add-are-speech-zones-used-4.png',
+      categories: [
+        {
+          name: 'Phones',
+          image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/1/637686973775896947_ip-12-dd.jpg'
+        },
+        {
+          name: 'Macbooks',
+          image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/6/7/637901915720184032_macbook-air-m2-2022-den-dd.jpg'
+        },
+        {
+          name: 'Ipads',
+          image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/21/637546013880588874_ipad-pro-11-wifi-dd.jpg'
+        },
+        {
+          name: 'Watchs',
+          image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/12/637985935050489552_apple-watch-series-8-gps-41mm-do-dd.jpg'
+        }
+      ]
+    },
+    {
+      name: 'Samsung',
+      image: 'https://cdn.freebiesupply.com/logos/large/2x/samsung-4-logo-png-transparent.png',
+      categories: [
+        {
+          name: 'Phones',
+          image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/11/1/638028876073020248_samsung-galaxy-z-fold4-kem-dd-tragop-bh.jpg',
+        },
+        {
+          name: 'Accessories',
+          image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/11/1/637713876159168451_PowerGo-white-600x602.png'
+        }
+      ]
+    },
+    {
+      name: 'Xiaomi',
+      image: 'https://brademar.com/wp-content/uploads/2022/05/Xiaomi-Logo-PNG-2019-%E2%80%93-Now.png',
+      categories: [
+        {
+          name: 'Phones',
+          image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/11/1/637713876159168451_PowerGo-white-600x602.png'
+        }
+      ]
+
+    },
+    {
+      name: 'Lenovo',
+      image: 'https://cdn.freebiesupply.com/logos/thumbs/2x/lenovo-1-logo.png',
+      categories: [
+        {
+          name: 'Laptop',
+          image: 'https://fptshop.com.vn/Uploads/images/2015/0511/Lenovo-IdeaPad-Gaming-3-15ARH7-black-14.jpg' 
+        }
+      ]
+    },
+    {
+      name: 'Asus',
+      image: 'https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-asus-inkythuatso-2-01-26-09-21-11.jpg',
+      categories: [
+        {
+          name: 'Laptop',
+          image: 'https://images.fpt.shop/unsafe/fit-in/240x215/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/1/26/637787904727727554_asus-tuf-gaming-fx506lh-den-2022-dd.jpg' 
+        }
+      ]
+    },
+    {
+      name: 'Oppo',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/OPPO_LOGO_2019.svg/2560px-OPPO_LOGO_2019.svg.png',
+      categories: [
+        {
+          name: 'Phones',
+          image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/5/637952895644732120_oppo-reno8-4g-dd.jpg'
+        }
+      ]
+
+    }
   ]
 }
 

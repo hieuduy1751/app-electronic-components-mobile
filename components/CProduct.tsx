@@ -2,9 +2,9 @@ import { View, TouchableOpacity, Text, Image, LogBox } from 'react-native';
 
 LogBox.ignoreLogs(['Warning: '])
 
-const CProduct = ({ item }: any) => {
+const CProduct = ({ item, navigation }: any) => {
   const handleGoToDetail = () => {
-    item.navigation.navigate('ProductDetail', { item });
+    navigation.navigate('ProductDetail', { item });
   };
   return (
     <TouchableOpacity
@@ -50,8 +50,10 @@ const CProduct = ({ item }: any) => {
         <Image
           style={{
             width: '100%',
+            height: '100%',
+            borderRadius: 10,
           }}
-          source={item.image}
+          source={{uri: item.image}}
         />
       </View>
       <View
