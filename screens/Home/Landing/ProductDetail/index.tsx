@@ -158,9 +158,9 @@ const ProductDetail = ({ route }: any) => {
           <Text style={{
             fontSize: 12,
             color: '#212529',
-            fontWeight: '200'
+            fontWeight: '500'
           }}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id doloremque consectetur nemo iste facere! Dolorem omnis autem blanditiis aliquid consequatur nisi tempore earum nesciunt eius, vero, in veritatis quasi aperiam?
+            {item.description}
           </Text>
         </View>
         <View style={{
