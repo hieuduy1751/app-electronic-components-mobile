@@ -8,10 +8,12 @@ import {
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { LogBox } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 // ignore all logs
 LogBox.ignoreAllLogs();
 
 const ProductDetail = ({ route }: any) => {
+  const navigation = useNavigation();
   const { item } = route.params;
   return (
     <SafeAreaView
@@ -40,7 +42,7 @@ const ProductDetail = ({ route }: any) => {
           zIndex: 100,
         }}
       >
-        <TouchableOpacity onPress={() => item.navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <MaterialIcons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
       </View>
@@ -67,7 +69,7 @@ const ProductDetail = ({ route }: any) => {
             width: 300,
             height: 200,
           }}
-          source={item.image}
+          source={{uri: item.image}}
         />
       </View>
       <View
@@ -163,7 +165,7 @@ const ProductDetail = ({ route }: any) => {
             color: '#212529',
             fontWeight: '500'
           }}>
-            {item.description}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam explicabo nisi aperiam animi! Voluptate, dolorum sint cumque a ea temporibus debitis optio? Ratione tempora perferendis porro 
           </Text>
         </View>
         <View style={{

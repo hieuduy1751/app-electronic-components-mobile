@@ -113,7 +113,7 @@ const Root = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   return (
-    <Root.Navigator initialRouteName="Auth" screenOptions={{
+    <Root.Navigator initialRouteName="Home" screenOptions={{
       headerTransparent: true,
       headerShown: false,
     }}>

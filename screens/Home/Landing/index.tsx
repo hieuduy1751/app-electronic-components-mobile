@@ -5,54 +5,18 @@ import {
   TouchableOpacity,
   View,
   Text,
-  FlatList
+  FlatList,
+  ScrollView
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 import CProduct from '../../../components/CProduct';
+import data from '../../../mock-data';
 
 const Landing = ({ navigation }: any) => {
   const logo = require('../../../assets/images/horizontal-logo.png');
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>('');
-
-  const mockData = [
-    {
-      id: 1,
-      name: 'MacBook Pro 16-inch (2021) ',
-      price: 2499,
-      image: require('../../../assets/images/macbook16.png'),
-      navigation
-    },
-    {
-      id: 2,
-      name: 'Iphone 14 Promax màu tím ',
-      price: 2499,
-      image: require('../../../assets/images/iphone14_purple.jpg'),
-      navigation
-    },
-    {
-      id: 3,
-      name: 'Iphone 14 Promax màu trắng ',
-      price: 2399,
-      image: require('../../../assets/images/iphone14_white.jpg'),
-      navigation
-    },
-    {
-      id: 4,
-      name: 'Asus Zenbook 14 inch ',
-      price: 2499,
-      image: require('../../../assets/images/asus_zenbook.jpg'),
-      navigation
-    },
-    {
-      id: 5,
-      name: 'Asus Zenbook 13 inch',
-      price: 2499,
-      image: require('../../../assets/images/asus_zenbook14.jpg'),
-      navigation
-    },
-  ]
 
   useEffect(() => {
     // TODO: Fetch data from API
@@ -121,6 +85,10 @@ const Landing = ({ navigation }: any) => {
           </TouchableOpacity>
         )}
       </View>
+      <ScrollView style={{
+        width: '100%',
+        flex: 1,
+      }}>
       <View style={{
         width: '100%',
         height: 50,
@@ -150,10 +118,209 @@ const Landing = ({ navigation }: any) => {
         width: '100%',
         paddingHorizontal: 30
       }}>
-        <FlatList data={mockData} renderItem={CProduct} keyExtractor={(item) => item.id.toString()} horizontal extraData={{
+        <FlatList showsHorizontalScrollIndicator={false} data={data.products} renderItem={({item}) => <CProduct item={item} navigation={navigation} />} keyExtractor={(item) => item.name} horizontal extraData={{
           navigation
         }} />
       </View>
+      <View style={{
+        width: '100%',
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 30,
+        alignItems: 'center',
+      }}>
+        <Text style={{
+          fontWeight: 'bold',
+          fontSize: 14,
+        }}>
+          Laptop
+        </Text>
+        <TouchableOpacity>
+          <Text style={{
+            fontWeight: 'bold',
+            fontSize: 14,
+            textDecorationLine: 'underline',
+            color: '#A6A6AA'
+          }}>
+            SEE ALL
+          </Text>
+          </TouchableOpacity>
+      </View>
+      <View style={{
+        width: '100%',
+        paddingHorizontal: 30
+      }}>
+        <FlatList showsHorizontalScrollIndicator={false} data={data.products.filter(item => item.category === 'laptop')} renderItem={({item}) => <CProduct item={item} navigation={navigation} />} keyExtractor={(item) => item.name} horizontal extraData={{
+          navigation
+        }} />
+      </View>
+      <View style={{
+        width: '100%',
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 30,
+        alignItems: 'center',
+      }}>
+        <Text style={{
+          fontWeight: 'bold',
+          fontSize: 14,
+        }}>
+          Tablets
+        </Text>
+        <TouchableOpacity>
+          <Text style={{
+            fontWeight: 'bold',
+            fontSize: 14,
+            textDecorationLine: 'underline',
+            color: '#A6A6AA'
+          }}>
+            SEE ALL
+          </Text>
+          </TouchableOpacity>
+      </View>
+      <View style={{
+        width: '100%',
+        paddingHorizontal: 30
+      }}>
+        <FlatList showsHorizontalScrollIndicator={false} data={data.products.filter(item => item.category === 'Ipads')} renderItem={({item}) => <CProduct item={item} navigation={navigation} />} keyExtractor={(item) => item.name} horizontal extraData={{
+          navigation
+        }} />
+      </View>
+      <View style={{
+        width: '100%',
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 30,
+        alignItems: 'center',
+      }}>
+        <Text style={{
+          fontWeight: 'bold',
+          fontSize: 14,
+        }}>
+          Phones
+        </Text>
+        <TouchableOpacity>
+          <Text style={{
+            fontWeight: 'bold',
+            fontSize: 14,
+            textDecorationLine: 'underline',
+            color: '#A6A6AA'
+          }}>
+            SEE ALL
+          </Text>
+          </TouchableOpacity>
+      </View>
+      <View style={{
+        width: '100%',
+        paddingHorizontal: 30
+      }}>
+        <FlatList showsHorizontalScrollIndicator={false} data={data.products.filter(item => item.category === 'Phones')} renderItem={({item}) => <CProduct item={item} navigation={navigation} />} keyExtractor={(item) => item.name} horizontal extraData={{
+          navigation
+        }} />
+      </View>
+      <View style={{
+        width: '100%',
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 30,
+        alignItems: 'center',
+      }}>
+        <Text style={{
+          fontWeight: 'bold',
+          fontSize: 14,
+        }}>
+          Macbooks
+        </Text>
+        <TouchableOpacity>
+          <Text style={{
+            fontWeight: 'bold',
+            fontSize: 14,
+            textDecorationLine: 'underline',
+            color: '#A6A6AA'
+          }}>
+            SEE ALL
+          </Text>
+          </TouchableOpacity>
+      </View>
+      <View style={{
+        width: '100%',
+        paddingHorizontal: 30
+      }}>
+        <FlatList showsHorizontalScrollIndicator={false} data={data.products.filter(item => item.category === 'Macbooks')} renderItem={({item}) => <CProduct item={item} navigation={navigation} />} keyExtractor={(item) => item.name} horizontal extraData={{
+          navigation
+        }} />
+      </View>
+      <View style={{
+        width: '100%',
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 30,
+        alignItems: 'center',
+      }}>
+        <Text style={{
+          fontWeight: 'bold',
+          fontSize: 14,
+        }}>
+          Watches
+        </Text>
+        <TouchableOpacity>
+          <Text style={{
+            fontWeight: 'bold',
+            fontSize: 14,
+            textDecorationLine: 'underline',
+            color: '#A6A6AA'
+          }}>
+            SEE ALL
+          </Text>
+          </TouchableOpacity>
+      </View>
+      <View style={{
+        width: '100%',
+        paddingHorizontal: 30
+      }}>
+        <FlatList showsHorizontalScrollIndicator={false} data={data.products.filter(item => item.category === 'Watchs')} renderItem={({item}) => <CProduct item={item} navigation={navigation} />} keyExtractor={(item) => item.name} horizontal extraData={{
+          navigation
+        }} />
+      </View>
+      <View style={{
+        width: '100%',
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 30,
+        alignItems: 'center',
+      }}>
+        <Text style={{
+          fontWeight: 'bold',
+          fontSize: 14,
+        }}>
+          Accessories
+        </Text>
+        <TouchableOpacity>
+          <Text style={{
+            fontWeight: 'bold',
+            fontSize: 14,
+            textDecorationLine: 'underline',
+            color: '#A6A6AA'
+          }}>
+            SEE ALL
+          </Text>
+          </TouchableOpacity>
+      </View>
+      <View style={{
+        width: '100%',
+        paddingHorizontal: 30
+      }}>
+        <FlatList showsHorizontalScrollIndicator={false} data={data.products.filter(item => item.category === 'Accessories')} renderItem={({item}) => <CProduct item={item} navigation={navigation} />} keyExtractor={(item) => item.name} horizontal extraData={{
+          navigation
+        }} />
+      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
