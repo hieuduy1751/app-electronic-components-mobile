@@ -264,7 +264,7 @@ const data = {
     },
     {
       name: 'Pin sạc dự phòng Innostyle PowerGo Smart Ai 10000mAh',
-      category: 'Acessories',
+      category: 'Accessories',
       price: 1200,
       brand: 'Samsung',
       color: ['Black', 'Silver', 'Gold'],
@@ -272,7 +272,7 @@ const data = {
     },
     {
       name: 'Pin sạc dự phòng UmeTravel 10000mAh TRIP10000 Quick Charge',
-      category: 'Acessories',
+      category: 'Accessories',
       price: 50,
       brand: 'Samsung',
       color: ['Black', 'Silver', 'Gold'],

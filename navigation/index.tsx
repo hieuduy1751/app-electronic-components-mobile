@@ -18,11 +18,12 @@ import Category from '../screens/Home/Category';
 import Landing from '../screens/Home/Landing';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { AuthStackParamList, HomeStackParamList, RootStackParamList, RootTabParamList } from '../types';
+import { AuthStackParamList, CategoryStackParamList, HomeStackParamList, RootStackParamList, RootTabParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import { MaterialIcons } from '@expo/vector-icons';
 import ProductDetail from '../screens/Home/Landing/ProductDetail';
 import Register2 from '../screens/Auth/Register2';
+import All from '../screens/Home/Category/All';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -64,7 +65,7 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Landing"
+      initialRouteName="Account"
       screenOptions={{
         tabBarActiveTintColor: 'orange',
         headerShown: false,
@@ -82,8 +83,8 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Category"
-        component={Category}
+        name="CategoryStack"
+        component={CategoryNavigator}
         options={{
           title: 'Category',
           tabBarIcon: ({ color }) => <TabBarIcon name="category" color={color} />,
@@ -113,13 +114,26 @@ const Root = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   return (
-    <Root.Navigator initialRouteName="Home" screenOptions={{
+    <Root.Navigator initialRouteName="Auth" screenOptions={{
       headerTransparent: true,
       headerShown: false,
     }}>
       <Root.Screen name="Auth" component={AuthNavigator}></Root.Screen>
       <Root.Screen name="Home" component={HomeNavigator}></Root.Screen>
     </Root.Navigator>
+  )
+}
+
+const CategoryStack = createNativeStackNavigator<CategoryStackParamList>();
+const CategoryNavigator = () => {
+  return (
+    <CategoryStack.Navigator initialRouteName="Category" screenOptions={{
+      headerTransparent: true,
+      headerShown: false,
+    }}>
+      <CategoryStack.Screen name="Category" component={Category} />
+      <CategoryStack.Screen name="All" component={All} />
+    </CategoryStack.Navigator>
   )
 }
 

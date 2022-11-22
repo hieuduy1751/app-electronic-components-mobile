@@ -27,7 +27,7 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
 
 export type RootTabParamList = {
   Landing: NavigatorScreenParams<LandingStackParamList> | undefined;
-  Category: NavigatorScreenParams<CategoryStackParamList> | undefined;
+  CategoryStack: NavigatorScreenParams<CategoryStackParamList> | undefined;
   Account: NavigatorScreenParams<AccountStackParamList> | undefined;
   Cart: NavigatorScreenParams<CartStackParamList> | undefined;
 };
@@ -56,6 +56,7 @@ export type LandingStackParamList = {
 
 export type CategoryStackParamList = {
   Category: undefined;
+  All: undefined;
 }
 
 export type AccountStackParamList = {
