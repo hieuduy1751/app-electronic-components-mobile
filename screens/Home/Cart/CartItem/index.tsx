@@ -1,9 +1,8 @@
 import React from "react";
 import { Image, Text, TouchableOpacity } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "../../../../components/Themed";
 
-const CartItem = ({ item }: any) => {
+const CartItem = ({ item, handleUpdate, handleRemove }: any) => {
   return (
     <View
       style={{
@@ -26,6 +25,7 @@ const CartItem = ({ item }: any) => {
       }}
     >
       <TouchableOpacity
+        onPress={() => handleRemove(item)}
         style={{
           borderRadius: 100,
           width: 20,
@@ -54,7 +54,7 @@ const CartItem = ({ item }: any) => {
             height: 100,
             resizeMode: "contain",
           }}
-          source={item.image}
+          source={{uri: encodeURI(item.image)}}
         />
       </View>
       <View
@@ -96,13 +96,19 @@ const CartItem = ({ item }: any) => {
           }}
         >
           <Text>Quantity</Text>
-          <TouchableOpacity style={{ marginHorizontal: 5 }}>
+          <TouchableOpacity disabled={item.quantity <= 1 } onPress={() => handleUpdate({
+            ...item,
+            quantity: item.quantity - 1
+          })} style={{ marginHorizontal: 5 }}>
             <Image
               source={require("../../../../assets/images/icons/minus.png")}
             />
           </TouchableOpacity>
-          <Text>1</Text>
-          <TouchableOpacity style={{ marginHorizontal: 5 }}>
+          <Text>{item.quantity}</Text>
+          <TouchableOpacity onPress={() => handleUpdate({
+            ...item,
+            quantity: item.quantity + 1
+          })} style={{ marginHorizontal: 5 }}>
             <Image
               source={require("../../../../assets/images/icons/plus.png")}
             />

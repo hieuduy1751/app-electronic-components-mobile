@@ -2,6 +2,7 @@ import { Alert } from "react-native";
 import { all, call, put, takeEvery } from "redux-saga/effects";
 import { login, register } from "../../services/user-service";
 import actions from "./actions";
+import cartActions from '../cart/actions'
 
 export function* LOGIN({ payload }: any): any {
   yield put({
@@ -17,6 +18,12 @@ export function* LOGIN({ payload }: any): any {
       payload: {
         loading: false,
         data: res
+      }
+    })
+    yield put({
+      type: cartActions.GET_CART,
+      payload: {
+        username: res.username
       }
     })
     Alert.alert('Login successful!', 'Welcome to our app!')

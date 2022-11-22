@@ -139,16 +139,6 @@ const Landing = ({ navigation }: any) => {
           }}>
             Hot Deals
           </Text>
-          <TouchableOpacity>
-            <Text style={{
-              fontWeight: 'bold',
-              fontSize: 14,
-              textDecorationLine: 'underline',
-              color: '#A6A6AA'
-            }}>
-              SEE ALL
-            </Text>
-          </TouchableOpacity>
         </View>
         <View style={{
           width: '100%',
@@ -172,16 +162,6 @@ const Landing = ({ navigation }: any) => {
           }}>
             Laptop
           </Text>
-          <TouchableOpacity>
-            <Text style={{
-              fontWeight: 'bold',
-              fontSize: 14,
-              textDecorationLine: 'underline',
-              color: '#A6A6AA'
-            }}>
-              SEE ALL
-            </Text>
-          </TouchableOpacity>
         </View>
         <View style={{
           width: '100%',
@@ -205,16 +185,6 @@ const Landing = ({ navigation }: any) => {
           }}>
             Tablets
           </Text>
-          <TouchableOpacity>
-            <Text style={{
-              fontWeight: 'bold',
-              fontSize: 14,
-              textDecorationLine: 'underline',
-              color: '#A6A6AA'
-            }}>
-              SEE ALL
-            </Text>
-          </TouchableOpacity>
         </View>
         <View style={{
           width: '100%',
@@ -238,16 +208,6 @@ const Landing = ({ navigation }: any) => {
           }}>
             Phones
           </Text>
-          <TouchableOpacity>
-            <Text style={{
-              fontWeight: 'bold',
-              fontSize: 14,
-              textDecorationLine: 'underline',
-              color: '#A6A6AA'
-            }}>
-              SEE ALL
-            </Text>
-          </TouchableOpacity>
         </View>
         <View style={{
           width: '100%',
@@ -271,16 +231,6 @@ const Landing = ({ navigation }: any) => {
           }}>
             Macbooks
           </Text>
-          <TouchableOpacity>
-            <Text style={{
-              fontWeight: 'bold',
-              fontSize: 14,
-              textDecorationLine: 'underline',
-              color: '#A6A6AA'
-            }}>
-              SEE ALL
-            </Text>
-          </TouchableOpacity>
         </View>
         <View style={{
           width: '100%',
@@ -304,16 +254,6 @@ const Landing = ({ navigation }: any) => {
           }}>
             Watches
           </Text>
-          <TouchableOpacity>
-            <Text style={{
-              fontWeight: 'bold',
-              fontSize: 14,
-              textDecorationLine: 'underline',
-              color: '#A6A6AA'
-            }}>
-              SEE ALL
-            </Text>
-          </TouchableOpacity>
         </View>
         <View style={{
           width: '100%',
@@ -337,16 +277,6 @@ const Landing = ({ navigation }: any) => {
           }}>
             Accessories
           </Text>
-          <TouchableOpacity>
-            <Text style={{
-              fontWeight: 'bold',
-              fontSize: 14,
-              textDecorationLine: 'underline',
-              color: '#A6A6AA'
-            }}>
-              SEE ALL
-            </Text>
-          </TouchableOpacity>
         </View>
         <View style={{
           width: '100%',

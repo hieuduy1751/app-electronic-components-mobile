@@ -5,16 +5,37 @@ import {
   TouchableOpacity,
   View,
   FlatList,
+  Alert,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { LogBox } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import actions from '../../../../redux/cart/actions';
 // ignore all logs
 LogBox.ignoreAllLogs();
 
 const ProductDetail = ({ route }: any) => {
   const navigation = useNavigation();
+  const cart = useSelector((state: any) => state.cart.data);
+  console.log(cart)
+  const dispatch = useDispatch();
   const { item } = route.params;
+  const handleAddToCart = () => {
+    dispatch({
+      type: actions.ADD_TO_CART,
+      payload: {
+        cartId: cart?.id,
+        item: {
+          ...item,
+          quantity: 1,
+        },
+        callback: () => {
+          Alert.alert('Success', 'Product added to cart');
+        }
+      }
+    })
+  }
   return (
     <SafeAreaView
       style={{
@@ -69,7 +90,7 @@ const ProductDetail = ({ route }: any) => {
             width: 300,
             height: 200,
           }}
-          source={{uri: item.image}}
+          source={{ uri: item.image }}
         />
       </View>
       <View
@@ -165,7 +186,7 @@ const ProductDetail = ({ route }: any) => {
             color: '#212529',
             fontWeight: '500'
           }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam explicabo nisi aperiam animi! Voluptate, dolorum sint cumque a ea temporibus debitis optio? Ratione tempora perferendis porro 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam explicabo nisi aperiam animi! Voluptate, dolorum sint cumque a ea temporibus debitis optio? Ratione tempora perferendis porro
           </Text>
         </View>
         <View style={{
@@ -193,14 +214,16 @@ const ProductDetail = ({ route }: any) => {
           height: 60,
           marginVertical: 20
         }}>
-          <TouchableOpacity style={{
-            width: '100%',
-            height: 60,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'orange',
-            borderRadius: 10
-          }}>
+          <TouchableOpacity
+            onPress={handleAddToCart}
+            style={{
+              width: '100%',
+              height: 60,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'orange',
+              borderRadius: 10
+            }}>
             <Text style={{
               fontWeight: 'bold',
               fontSize: 18,

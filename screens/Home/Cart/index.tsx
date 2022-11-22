@@ -1,53 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
+import actions from '../../../redux/cart/actions'
 import CartItem from "./CartItem";
 
 const Cart = ({ navigation }: any) => {
-  const mockData = [
-    {
-      id: 1,
-      name: "MacBook Pro 16-inch (2021) ",
-      price: 2499,
-      image: require("../../../assets/images/macbook16.png"),
-      navigation,
-    },
-    {
-      id: 2,
-      name: "MacBook Pro 16-inch (2021) ",
-      price: 2499,
-      image: require("../../../assets/images/macbook16.png"),
-      navigation,
-    },
-    {
-      id: 3,
-      name: "MacBook Pro 16-inch (2021) ",
-      price: 2499,
-      image: require("../../../assets/images/macbook16.png"),
-      navigation,
-    },
-    {
-      id: 4,
-      name: "MacBook Pro 16-inch (2021) ",
-      price: 2499,
-      image: require("../../../assets/images/macbook16.png"),
-      navigation,
-    },
-    {
-      id: 5,
-      name: "MacBook Pro 16-inch (2021) ",
-      price: 2499,
-      image: require("../../../assets/images/macbook16.png"),
-      navigation,
-    },
-    {
-      id: 6,
-      name: "MacBook Pro 16-inch (2021) ",
-      price: 2499,
-      image: require("../../../assets/images/macbook16.png"),
-      navigation,
-    },
-  ];
+  const [total, setTotal] = React.useState(0);
+  const dispatch = useDispatch();
+  const cart = useSelector((state: any) => state.cart.data);
+  const user = useSelector((state: any) => state.user.data);
+
+  const handleUpdate = (item: any) => {
+    dispatch({
+      type: actions.UPDATE_CART,
+      payload: {
+        cartId: cart?.id,
+        item
+      }
+    })
+  }
+
+  const handleRemove = (item: any) => {
+    dispatch({
+      type: actions.REMOVE_FROM_CART,
+      payload: {
+        cartId: cart?.id,
+        item
+      }
+    })
+  }
+
+  useEffect(() => {
+    let total = 0;
+    cart?.cart?.forEach((item: any) => {
+      total += item.price * item.quantity;
+    });
+    setTotal(total);
+  }, [cart?.cart])
+  
+  
   return (
     <SafeAreaView
       style={{
@@ -56,6 +48,14 @@ const Cart = ({ navigation }: any) => {
         display:"flex",
       }}
     >
+      {!cart?.cart && (
+          <Text style={{
+            fontSize: 24,
+            alignSelf: 'center',
+            fontWeight: 'bold',
+            marginTop: 20
+          }}>No items</Text>
+        )}
       <View
         style={{
           width: "100%",
@@ -66,9 +66,9 @@ const Cart = ({ navigation }: any) => {
       >
         <FlatList
           // style={{ height: "100%", backgroundColor: "red" }}
-          data={mockData}
-          renderItem={CartItem}
-          keyExtractor={(item) => item.id.toString()}
+          data={cart?.cart}
+          renderItem={({item}) => <CartItem item={item} handleUpdate={handleUpdate} handleRemove={handleRemove} />}
+          keyExtractor={(item) => item.name}
           horizontal={false}
           extraData={{
             navigation,
@@ -97,7 +97,7 @@ const Cart = ({ navigation }: any) => {
               fontSize: 28,
             }}
           >
-            $
+            ${total}
           </Text>
         </View>
         <View
@@ -124,7 +124,7 @@ const Cart = ({ navigation }: any) => {
                 color: "white",
               }}
             >
-              ADD TO CART
+              CHECKOUT
             </Text>
           </TouchableOpacity>
         </View>

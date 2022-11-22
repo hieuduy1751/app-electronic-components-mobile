@@ -65,7 +65,7 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Account"
+      initialRouteName="Cart"
       screenOptions={{
         tabBarActiveTintColor: 'orange',
         headerShown: false,

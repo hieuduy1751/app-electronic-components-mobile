@@ -6,6 +6,7 @@ import CInput from "../../../components/CInput"
 import HideKeyboard from "../../../components/HideKeyboard"
 import GlobalStyles from "../../../constants/GlobalStyles"
 import actions from "../../../redux/user/actions"
+import cartActions from '../../../redux/cart/actions'
 
 const Login = ({ navigation }: { navigation: any }) => {
   const dispatch = useDispatch()
