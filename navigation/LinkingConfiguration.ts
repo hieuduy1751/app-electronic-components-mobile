@@ -22,9 +22,10 @@ const linking: LinkingOptions<RootStackParamList> = {
                   Landing: 'landing',
                 },
               },
-              Category: {
+              CategoryStack: {
                 screens: {
                   Category: 'category',
+                  All: 'all',
                 },
               },
               Account: {

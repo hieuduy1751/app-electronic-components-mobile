@@ -4,7 +4,7 @@ LogBox.ignoreLogs(['Warning: '])
 
 const CCategory = ({ item, navigation }: any) => {
   const handleGoToDetail = () => {
-    navigation.navigate('ProductDetail', { item });
+    navigation.navigate('All', { item });
   };
   return (
     <TouchableOpacity

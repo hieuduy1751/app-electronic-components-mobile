@@ -1,7 +1,7 @@
 import { useFonts } from 'expo-font'
 import { Roboto_700Bold } from '@expo-google-fonts/roboto'
 import React from 'react'
-import { Text, View, Pressable, StyleSheet } from 'react-native'
+import { Text, View, Pressable, StyleSheet, TouchableOpacity } from 'react-native'
 
 const CButton = ({ btnProps, title, backgroundColor, textStyles = {} }: { btnProps: any, title: string, backgroundColor: string, textStyles?: any }) => {
   const [fontsLoaded] = useFonts({
@@ -11,13 +11,13 @@ const CButton = ({ btnProps, title, backgroundColor, textStyles = {} }: { btnPro
   if (!fontsLoaded) return null
 
   return (
-    <Pressable {...btnProps} style={styles.pressableWrapper}>
+    <TouchableOpacity {...btnProps} style={styles.pressableWrapper}>
       <View style={{ backgroundColor, ...styles.btnWrapper }}>
         <Text style={{ ...styles.btnText, ...textStyles }}>
           {title}
         </Text>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   )
 }
 

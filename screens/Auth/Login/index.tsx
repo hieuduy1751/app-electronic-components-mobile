@@ -10,8 +10,8 @@ import actions from "../../../redux/user/actions"
 const Login = ({ navigation }: { navigation: any }) => {
   const dispatch = useDispatch()
   const [account, setAccount] = useState<{ username: string, password: string }>({
-    username: '',
-    password: ''
+    username: 'hieud123',
+    password: '12345'
   })
   const loading = useSelector((state: any) => state.user.loading)
 
