@@ -316,7 +316,7 @@ const Landing = ({ navigation }: any) => {
         width: '100%',
         paddingHorizontal: 30
       }}>
-        <FlatList showsHorizontalScrollIndicator={false} data={data.products.filter(item => item.category === 'Accessories')} renderItem={({item}) => <CProduct item={item} navigation={navigation} />} keyExtractor={(item) => item.name} horizontal extraData={{
+        <FlatList showsHorizontalScrollIndicator={false} data={data.products.filter(item => item.category === 'Acessories')} renderItem={({item}) => <CProduct item={item} navigation={navigation} />} keyExtractor={(item) => item.name} horizontal extraData={{
           navigation
         }} />
       </View>

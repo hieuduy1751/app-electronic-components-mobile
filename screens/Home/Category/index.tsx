@@ -5,11 +5,14 @@ import {
   TouchableOpacity,
   View,
   Text,
-  FlatList
+  FlatList,
+  ScrollView
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import CProduct from '../../../components/CProduct';
+import data from '../../../mock-data';
+import CCategory from '../../../components/CCategory';
 
 const Category = ({ navigation }: any) => {
   const logo = require('../../../assets/images/horizontal-logo.png');
@@ -17,59 +20,15 @@ const Category = ({ navigation }: any) => {
   const [searchInput, setSearchInput] = useState<string>('');
   const numberCollumns = 2;
 
-  const filtered = () => mockData.filter(eachMockData => eachMockData.name.toLowerCase()
-                                    .includes(searchInput.toLowerCase()))
-
-  const mockData = [
-    {
-      id: 1,
-      name: 'MacBook Air M1 256GB 2020',
-      price: 1400,
-      image: require('../../../assets/images/macbook_air_22.png'),
-      description:'Loại card đồ họa : GPU 7 nhân, 16 nhân Neural Engine \nDung lượng RAM 8GB \nỔ cứng: 256GB SSD \nPin: 49.9-watt-hour lithium-polymer \nTính năng khác: Cảm biến vân tay Touch ID',
-      navigation
-    },
-    {
-      id: 2,
-      name: 'MacBook Air M2 256GB 2022',
-      price: 1900,
-      image: require('../../../assets/images/macbook_air_m2_4_1_1.jpg'),
-      description:'Loại card đồ họa : GPU 8 nhân, 16 nhân Neural Engine \nDung lượng RAM 8GB \nỔ cứng: 256GB SSD \nPin: 55.9-watt-hour lithium-polymer \nTính năng khác: 4 loa trang bị công nghệ dolby atmos',
-      navigation
-    },
-    {
-      id: 3,
-      name: 'Asus Rog Strix Scar 15 ',
-      price: 2800,
-      image: require('../../../assets/images/asus1.jpeg'),
-      description:'Loại card đồ họa : GPU NVIDIA Geforce RTX 3080 \nDung lượng RAM 32GB \nỔ cứng: 256GB SSD \nPin: 90WHrs, 4S1P, 4-cell Li-ion \nTính năng khác: Windows 11 Home',
-      navigation
-    },
-    {
-      id: 4,
-      name: 'ASUS Zenbook Pro 14 Duo',
-      price: 1300,
-      image: require('../../../assets/images/asus2.png'),
-      description:'Loại card đồ họa : OLED tỷ lệ 16:10 \nDung lượng RAM 16GB \nỔ cứng: 256GB SSD \nPin: 60WHrs, 4S1P, 4-cell Li-ion \nTính năng khác: Windows 11 Home',
-      navigation
-    },
-    {
-      id: 5,
-      name: 'Dell Vostro 5620 P117F001AGR',
-      price: 1250,
-      image: require('../../../assets/images/dell1.jpeg'),
-      description:'Loại card đồ họa : OLED tỷ lệ 16:10 \nDung lượng RAM 16GB \nỔ cứng: 256GB SSD \nPin: 60WHrs, 4S1P, 4-cell Li-ion \nTính năng khác: Windows 11 Home',
-      navigation
-    },
-    {
-      id: 6,
-      name: 'Dell Gaming G15 5511',
-      price: 1450,
-      image: require('../../../assets/images/dell2.jpeg'),
-      description:'Loại card đồ họa : OLED tỷ lệ 16:10 \nDung lượng RAM 16GB \nỔ cứng: 256GB SSD \nPin: 60WHrs, 4S1P, 4-cell Li-ion \nTính năng khác: Windows 11 Home',
-      navigation
-    }
-  ]
+  const allCategories = useMemo(() => {
+    return data.brands.reduce((acc: any, brand: any) => {
+      const categories = brand.categories.map((category: any) => {
+        category.name = `${brand.name} ${category.name}`;
+        return category;
+      });
+      return [...acc, ...categories];
+    }, []);
+  }, [data])
 
   useEffect(() => {
     // TODO: Fetch data from API
@@ -138,77 +97,73 @@ const Category = ({ navigation }: any) => {
           </TouchableOpacity>
         )}
       </View>
-      <View style={{
+      <ScrollView style={{
         width: '100%',
-        height: 50,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingHorizontal: 30,
-        alignItems: 'center',
+        height: '100%',
       }}>
-        
-        <TouchableOpacity>
+        <View style={{
+          width: '100%',
+          height: 50,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingHorizontal: 30,
+          alignItems: 'center',
+        }}>
           <Text style={{
+            fontWeight: 'bold',
+            fontSize: 14,
+          }}>
+            Brands
+          </Text>
+          <TouchableOpacity>
+            {/* <Text style={{
             fontWeight: 'bold',
             fontSize: 14,
             textDecorationLine: 'underline',
             color: '#A6A6AA'
           }}>
-            MACBOOK
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
+            SEE ALL
+          </Text> */}
+          </TouchableOpacity>
+        </View>
+        <View style={{
+          width: '100%',
+          paddingHorizontal: 30
+        }}>
+          <FlatList numColumns={numberCollumns} showsHorizontalScrollIndicator={false} data={data.brands} renderItem={({ item }) => <CCategory item={item} navigation={navigation} />} keyExtractor={(item) => item.name} />
+        </View>
+        <View style={{
+          width: '100%',
+          height: 50,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingHorizontal: 30,
+          alignItems: 'center',
+        }}>
           <Text style={{
+            fontWeight: 'bold',
+            fontSize: 14,
+          }}>
+            Categories
+          </Text>
+          <TouchableOpacity>
+            {/* <Text style={{
             fontWeight: 'bold',
             fontSize: 14,
             textDecorationLine: 'underline',
             color: '#A6A6AA'
           }}>
-            ASUS
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={{
-            fontWeight: 'bold',
-            fontSize: 14,
-            textDecorationLine: 'underline',
-            color: '#A6A6AA'
-          }}>
-            DELL
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={{
-            fontWeight: 'bold',
-            fontSize: 14,
-            textDecorationLine: 'underline',
-            color: '#A6A6AA'
-          }}>
-            HP
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={{
-            fontWeight: 'bold',
-            fontSize: 14,
-            textDecorationLine: 'underline',
-            color: '#A6A6AA'
-          }}>
-            LENOVO
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View style={{
-        width: '100%',
-        paddingHorizontal: 30
-      }}>
-        <FlatList data={filtered()} 
-                  renderItem={CProduct} 
-                  keyExtractor={(item) => item.id.toString()} 
-                  extraData={{navigation}} 
-                  numColumns={numberCollumns}
-        />
-      </View>
+            SEE ALL
+          </Text> */}
+          </TouchableOpacity>
+        </View>
+        <View style={{
+          width: '100%',
+          paddingHorizontal: 30
+        }}>
+          <FlatList numColumns={numberCollumns} showsHorizontalScrollIndicator={false} data={allCategories} renderItem={({ item }) => <CCategory item={item} navigation={navigation} />} keyExtractor={(item) => item.name} />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
