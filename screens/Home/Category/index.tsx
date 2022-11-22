@@ -18,6 +18,7 @@ const Category = ({ navigation }: any) => {
   const logo = require('../../../assets/images/horizontal-logo.png');
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>('');
+  const [searchResult, setSearchResult] = useState<any>([]);
   const numberCollumns = 2;
 
   const allCategories = useMemo(() => {
@@ -31,8 +32,13 @@ const Category = ({ navigation }: any) => {
   }, [data])
 
   useEffect(() => {
-    // TODO: Fetch data from API
+    if (searchInput.length > 0) {
+      setSearchResult(data.products.filter((product: any) => product.name.toLowerCase().includes(searchInput.toLowerCase())));
+    } else {
+      setSearchResult([]);
+    }
   }, [searchInput]);
+
 
   return (
     <SafeAreaView
@@ -58,8 +64,39 @@ const Category = ({ navigation }: any) => {
           shadowOpacity: 0.05,
           shadowRadius: 10,
           elevation: 5,
+          position: 'relative',
+          zIndex: 100
         }}
       >
+        {
+          showSearch ? (
+            <View style={{
+              width: 412,
+              height: 300,
+              position: 'absolute',
+              top: 80,
+              left: 0,
+              backgroundColor: '#F4FAFF',
+              paddingHorizontal: 30,
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.15,
+              shadowRadius: 10,
+              elevation: 5,
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 20,
+            }}>
+              <FlatList style={{
+                marginTop: 20,
+              }} showsHorizontalScrollIndicator={false} data={searchResult} renderItem={({ item }) => <CProduct item={item} navigation={navigation} />} keyExtractor={(item) => item.name} horizontal extraData={{
+                navigation
+              }} />
+            </View>
+          ) : null
+        }
         <TouchableOpacity>
           <MaterialIcons name="menu" size={24} color="black" />
         </TouchableOpacity>
