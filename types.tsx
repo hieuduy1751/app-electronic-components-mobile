@@ -29,7 +29,7 @@ export type RootTabParamList = {
   Landing: NavigatorScreenParams<LandingStackParamList> | undefined;
   CategoryStack: NavigatorScreenParams<CategoryStackParamList> | undefined;
   Account: NavigatorScreenParams<AccountStackParamList> | undefined;
-  Cart: NavigatorScreenParams<CartStackParamList> | undefined;
+  CartStack: NavigatorScreenParams<CartStackParamList> | undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
@@ -65,4 +65,7 @@ export type AccountStackParamList = {
 
 export type CartStackParamList = {
   Cart: undefined;
+  Payment: undefined;
+  EditAddress: undefined;
+  PaymentSuccess: undefined;
 }

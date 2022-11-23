@@ -18,12 +18,15 @@ import Category from '../screens/Home/Category';
 import Landing from '../screens/Home/Landing';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { AuthStackParamList, CategoryStackParamList, HomeStackParamList, RootStackParamList, RootTabParamList } from '../types';
+import { AuthStackParamList, CartStackParamList, CategoryStackParamList, HomeStackParamList, RootStackParamList, RootTabParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import { MaterialIcons } from '@expo/vector-icons';
 import ProductDetail from '../screens/Home/Landing/ProductDetail';
 import Register2 from '../screens/Auth/Register2';
 import All from '../screens/Home/Category/All';
+import Payment from '../screens/Payment/Payment';
+import EditAddress from '../screens/EditAddress/EditAddress';
+import PaymentSuccess from '../screens/Payment/PaymentSuccess';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -65,7 +68,7 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Cart"
+      initialRouteName="Landing"
       screenOptions={{
         tabBarActiveTintColor: 'orange',
         headerShown: false,
@@ -99,8 +102,8 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Cart"
-        component={Cart}
+        name="CartStack"
+        component={CartNavigator}
         options={{
           title: 'Cart',
           tabBarIcon: ({ color }) => <TabBarIcon name="shopping-cart" color={color} />,
@@ -121,6 +124,21 @@ const RootNavigator = () => {
       <Root.Screen name="Auth" component={AuthNavigator}></Root.Screen>
       <Root.Screen name="Home" component={HomeNavigator}></Root.Screen>
     </Root.Navigator>
+  )
+}
+
+const CartStack = createNativeStackNavigator<CartStackParamList>();
+const CartNavigator = () => {
+  return (
+    <CartStack.Navigator initialRouteName="Cart" screenOptions={{
+      headerTransparent: true,
+      headerShown: false,
+    }}>
+      <CartStack.Screen name="Cart" component={Cart} />
+      <CartStack.Screen name="Payment" component={Payment} />
+      <CartStack.Screen name="EditAddress" component={EditAddress} />
+      <CartStack.Screen name="PaymentSuccess" component={PaymentSuccess} />
+    </CartStack.Navigator>
   )
 }
 

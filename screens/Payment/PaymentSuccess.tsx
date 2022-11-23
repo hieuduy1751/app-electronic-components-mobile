@@ -9,7 +9,7 @@ import {
   Text,
   TouchableOpacity
   } from 'react-native';
-export default function PaymentSuccess() {
+export default function PaymentSuccess({navigation}: any) {
   return (
     <View style={{flexDirection:'column'}}>
         <View style={{alignItems:'center'}}>
@@ -17,7 +17,7 @@ export default function PaymentSuccess() {
 
         </View>
         <Text style={styles.textSuccess}>ORDER SUCCESFULLY</Text>
-        <TouchableOpacity style={{backgroundColor:'#FB8500', alignItems:'center', margin:20, padding:20, borderRadius:20}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Landing')} style={{backgroundColor:'#FB8500', alignItems:'center', margin:20, padding:20, borderRadius:20}}>
           <Text style={styles.paymentText}>HOME</Text>
         </TouchableOpacity>
     </View>

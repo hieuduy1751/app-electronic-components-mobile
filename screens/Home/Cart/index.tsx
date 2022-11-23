@@ -108,6 +108,7 @@ const Cart = ({ navigation }: any) => {
           }}
         >
           <TouchableOpacity
+            onPress={() => navigation.navigate("Payment")}
             style={{
               width: "100%",
               height: 60,

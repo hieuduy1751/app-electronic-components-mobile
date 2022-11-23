@@ -33,9 +33,12 @@ const linking: LinkingOptions<RootStackParamList> = {
                   Account: 'account',
                 }
               },
-              Cart: {
+              CartStack: {
                 screens: {
-                  Cart: 'cart'
+                  Cart: 'cart',
+                  Payment: 'payment',
+                  EditAddress: 'edit-address',
+                  PaymentSuccess: 'payment-success',
                 }
               },
             },
