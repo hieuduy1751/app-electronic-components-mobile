@@ -22,6 +22,7 @@ const Login = ({ navigation }: { navigation: any }) => {
         Alert.alert(
           "Login Success",
         )
+        setLoading(false)
         navigation.navigate('Home', { screen: 'Landing' })
       }, 1000)
     }
