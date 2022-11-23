@@ -155,7 +155,7 @@ const data = {
     {
       name:'Lenovo IdeaPad Gaming 3 15IAH7 i5',
       category:'laptop',
-      price:'23.790.000',
+      price: 1599,
       brand:'Lenovo',
       color:['Black'],
       image:'https://fptshop.com.vn/Uploads/images/2015/0511/Lenovo-IdeaPad-Gaming-3-15ARH7-black-14.jpg'
@@ -163,7 +163,7 @@ const data = {
     {
       name:'ThinkPad X1 Carbon Gen 10 Core i7-1255U',
       category:'laptop',
-      price:'37.900.000',
+      price: 1599,
       brand:'Lenovo',
       color:['Black'],
       image:'https://mac24h.vn/images/detailed/49/x1-carbon-gen-10_phll-j6_e8wb-ml.png?t=1663659320'
@@ -171,7 +171,7 @@ const data = {
     {
       name:'Lenovo ThinkBook 15 G4 IAP',
       category:'laptop',
-      price:'24,990,000',
+      price: 1599,
       brand:'Lenovo',
       color:['Black'],
       image:'https://product.hstatic.net/1000233206/product/lenovo-thinkbook-15-g4-iap-21dj00cwvn-i7-1255u_be0b639ce8b943539bac696bbd1b5941_master.png'
@@ -179,14 +179,14 @@ const data = {
     {
       name:'Lenovo IdeaPad 5 Pro 16ARH7',
       category:'laptop',
-      price:'26,490,000',
+      price: 1599,
       brand:'Lenovo',
       color:['White'],
       image:'https://product.hstatic.net/1000233206/product/lenovo-ideapad-5-pro-16arh7-82sn00afvn_38a6e8f093ad4572881c2e30eeab27bb_master.png'
     },{
       name:'Legion 7 16IAX7',
       category:'laptop',
-      price:'73,990,000',
+      price: 1599,
       brand:'Lenovo',
       color:['Gray'],
       image:'https://xgear.net/wp-content/uploads/2022/08/800x800-legion7-22-3.gif'
@@ -194,7 +194,7 @@ const data = {
     {
       name:'Lenovo IdeaPad Gaming 3 15IAH7 i5',
       category:'laptop',
-      price:'23.790.000',
+      price: 1599,
       brand:'Lenovo',
       color:['Black'],
       image:'https://fptshop.com.vn/Uploads/images/2015/0511/Lenovo-IdeaPad-Gaming-3-15ARH7-black-14.jpg'
@@ -202,7 +202,7 @@ const data = {
     {
       name:'ThinkPad X1 Carbon Gen 10 Core i7-1255U',
       category:'laptop',
-      price:'37.900.000',
+      price: 1599,
       brand:'Lenovo',
       color:['Black'],
       image:'https://mac24h.vn/images/detailed/49/x1-carbon-gen-10_phll-j6_e8wb-ml.png?t=1663659320'
@@ -210,7 +210,7 @@ const data = {
     {
       name:'Lenovo ThinkBook 15 G4 IAP',
       category:'laptop',
-      price:'24,990,000',
+      price: 1599,
       brand:'Lenovo',
       color:['Black'],
       image:'https://product.hstatic.net/1000233206/product/lenovo-thinkbook-15-g4-iap-21dj00cwvn-i7-1255u_be0b639ce8b943539bac696bbd1b5941_master.png'
@@ -218,18 +218,122 @@ const data = {
     {
       name:'Lenovo IdeaPad 5 Pro 16ARH7',
       category:'laptop',
-      price:'26,490,000',
+      price: 1599,
       brand:'Lenovo',
       color:['White'],
       image:'https://product.hstatic.net/1000233206/product/lenovo-ideapad-5-pro-16arh7-82sn00afvn_38a6e8f093ad4572881c2e30eeab27bb_master.png'
-    },{
+    },
+    {
       name:'Legion 7 16IAX7',
       category:'laptop',
-      price:'73,990,000',
+      price: 1599,
       brand:'Lenovo',
       color:['Gray'],
       image:'https://fptshop.com.vn/Uploads/images/2015/0511/Lenovo-IdeaPad-Gaming-3-15ARH7-black-14.jpg'
-    }
+    },
+    {name: 'Samsung Galaxy Z Fold4 5G 256GB',
+      category: 'Phones',
+      price: 999,
+      brand: 'Samsung',
+      color: ['Black', 'Silver', 'Gold'],
+      image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/11/1/638028876073020248_samsung-galaxy-z-fold4-kem-dd-tragop-bh.jpg'
+    },
+    {name: 'Samsung Galaxy Z Flip4 5G 128GB ',
+      category: 'Phones',
+      price: 789,
+      brand: 'Samsung',
+      color: ['Black', 'Silver', 'Gold'],
+      image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/11/1/638028876072863954_samsung-galaxy-z-flip4-vang-dd-tragop-bh.jpg'
+    },
+    {
+      name: 'Samsung Galaxy Z Flip4 5G Flex Mode Collection',
+      category: 'Phones',
+      price: 1500,
+      brand: 'Samsung',
+      color: ['Black', 'Silver', 'Gold'],
+      image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/11/8/638035043498655660_samsung-galaxy-z-flip4-flex-mode-dd-docquyen-bh.jpg'
+    },
+
+    {
+      name: 'Samsung Galaxy Z Fold3 5G 256GB',
+      category: 'Phones',
+      price: 1200,
+      brand: 'Samsung',
+      color: ['Black', 'Silver', 'Gold'],
+      image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/11/1/638028876072863954_samsung-galaxy-z-fold3-xanh-dd-tragop-bh.jpg'
+    },
+    {
+      name: 'Pin sạc dự phòng Innostyle PowerGo Smart Ai 10000mAh',
+      category: 'Accessory',
+      price: 1200,
+      brand: 'Samsung',
+      color: ['Black', 'Silver', 'Gold'],
+      image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/11/1/637713876159168451_PowerGo-white-600x602.png'
+    },
+    {
+      name: 'Pin sạc dự phòng UmeTravel 10000mAh TRIP10000 Quick Charge',
+      category: 'Accessory',
+      price: 50,
+      brand: 'Samsung',
+      color: ['Black', 'Silver', 'Gold'],
+      image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/1/14/637146114144718738_Trip20C_Black.jpg'
+    },
+    {
+      name: 'Xiaomi Redmi A1 2GB-32GB',
+      category: 'Phones',
+      price: 150,
+      brand: 'Xiaomi',
+      color: ['Black', 'Silver', 'Gold'],
+      image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/10/15/638014214489815604_xiaomi-redmi-a1-den-dd-bh.jpg'
+    },
+    {
+      name: 'Xiaomi Redmi A1 4GB-32GB 2021',
+      category: 'Phones',
+      price: 150,
+      brand: 'Xiaomi',
+      color: ['Black', 'Silver', 'Gold'],
+      image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/10/5/638005792458698545_xiaomi-redmi-10-dd-bh.jpg'
+    },
+    {
+      name: 'Xiaomi Redmi Note 11 4GB-32GB 2021',
+      category: 'Phones',
+      price: 150,
+      brand: 'Xiaomi',
+      color: ['Black', 'Silver', 'Gold'],
+      image: 'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/10/5/638005794858659317_xiaomi-redmi-note-11-dd-bh.jpg'
+    },
+    {
+      name:'Laptop Asus TUF Gaming FX506LHB-HN188W i5',
+      category:'laptop',
+      price:2500,
+      brand:'Asus',
+      color:['Black'],
+      image:'https://images.fpt.shop/unsafe/fit-in/240x215/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/1/26/637787904727727554_asus-tuf-gaming-fx506lh-den-2022-dd.jpg'
+    },
+    {
+      name:'Laptop Asus TUF Gaming FA506IHRB-HN019W R5',
+      category:'laptop',
+      price: 1200,
+      brand:'Asus',
+      color:['Black'],
+      image:'https://images.fpt.shop/unsafe/fit-in/240x215/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/2/637950740313797526_asus-tuf-gaming-fa506ihr-den-dd.jpg'
+    },
+    {
+      name:'Laptop Asus TUF Gaming FX517ZC-HN077W i5',
+      category:'laptop',
+      price: 2300,
+      brand:'Asus',
+      color:['Black'],
+      image:'https://images.fpt.shop/unsafe/fit-in/240x215/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/3/22/637835763372337463_asus-tuf-gaming-fx517-den-dd-rtx-3050.jpg'
+    },
+    {
+      name:'Laptop Asus TUF Gaming FX517ZC-HN077W i5',
+      category:'laptop',
+      price:2300,
+      brand:'Asus',
+      color:['Black'],
+      image:'https://images.fpt.shop/unsafe/fit-in/240x215/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/3/22/637835763372337463_asus-tuf-gaming-fx517-den-dd-rtx-3050.jpg'
+    },
   ]
 }
 
