@@ -23,7 +23,35 @@ const Landing = ({ navigation }: any) => {
       price: 2499,
       image: require('../../../assets/images/macbook16.png'),
       navigation
-    }
+    },
+    {
+      id: 2,
+      name: 'Iphone 14 Promax màu tím ',
+      price: 2499,
+      image: require('../../../assets/images/iphone14_purple.jpg'),
+      navigation
+    },
+    {
+      id: 3,
+      name: 'Iphone 14 Promax màu trắng ',
+      price: 2399,
+      image: require('../../../assets/images/iphone14_white.jpg'),
+      navigation
+    },
+    {
+      id: 4,
+      name: 'Asus Zenbook 14 inch ',
+      price: 2499,
+      image: require('../../../assets/images/asus_zenbook.jpg'),
+      navigation
+    },
+    {
+      id: 5,
+      name: 'Asus Zenbook 13 inch',
+      price: 2499,
+      image: require('../../../assets/images/asus_zenbook14.jpg'),
+      navigation
+    },
   ]
 
   useEffect(() => {
