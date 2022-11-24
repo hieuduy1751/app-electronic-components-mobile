@@ -83,9 +83,9 @@ export default function Payment({navigation}: any) {
           </View>
         </View>
         <View style={{ flexDirection: 'column-reverse' }}>
-            <View style={{ flexDirection: 'row', margin: 20, paddingRight: 10 }}>
+            <View style={{ flexDirection: 'row', paddingHorizontal: 20, justifyContent: 'space-between' }}>
               <Text style={styles.priceTotal}>Total</Text>
-              <Text style={[styles.priceTotal, { position: 'absolute', left: 315 }]}>${total}</Text>
+              <Text style={[styles.priceTotal]}>${total}</Text>
             </View>
           </View>
         <TouchableOpacity

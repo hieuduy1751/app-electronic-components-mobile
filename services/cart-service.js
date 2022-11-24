@@ -1,12 +1,19 @@
 import storageService from "./storage-service"
 
 export async function getCartByUsername(username) {
-  const carts = await storageService.getObject("carts")
+  const carts = await storageService.getObject("carts") 
   console.log(carts);
   if (!carts) {
     await createCartByUsername(username)
     const newCarts = await storageService.getObject("carts")
     return newCarts.find(cart => cart.username === username && cart.isActive === true)
+  } else {
+    const cart = carts.find(cart => cart.username === username && cart.isActive === true)
+    if (!cart) {
+      await createCartByUsername(username)
+      const newCarts = await storageService.getObject("carts")
+      return newCarts.find(cart => cart.username === username && cart.isActive === true)
+    }
   }
   return carts.find(cart => cart.username === username && cart.isActive === true)
 }
