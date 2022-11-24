@@ -49,10 +49,10 @@ export default function Payment({navigation}: any) {
         <View style={{
           flexGrow: 1
         }}>
-          <View style={{ flexDirection: 'row', margin: 20, }}>
+          <View style={{ flexDirection: 'row', margin: 20, paddingHorizontal: 20, justifyContent: 'space-between' }}>
             <Text style={{ fontWeight: 'bold', fontSize: 17 }}>Shipping Information</Text>
-            <TouchableOpacity>
-              <Text style={{ position: 'absolute', left: 300, fontSize: 17, color: '#F6AE2D', fontWeight: 'bold' }}>Change</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('EditAddress')}>
+              <Text style={{ fontSize: 17, color: '#F6AE2D', fontWeight: 'bold' }}>Change</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.infomationComp}>
@@ -85,7 +85,7 @@ export default function Payment({navigation}: any) {
         <View style={{ flexDirection: 'column-reverse' }}>
             <View style={{ flexDirection: 'row', margin: 20, paddingRight: 10 }}>
               <Text style={styles.priceTotal}>Total</Text>
-              <Text style={[styles.priceTotal, { position: 'absolute', left: 255 }]}>${total}</Text>
+              <Text style={[styles.priceTotal, { position: 'absolute', left: 315 }]}>${total}</Text>
             </View>
           </View>
         <TouchableOpacity
