@@ -334,7 +334,55 @@ const data = {
       color:['Black'],
       image:'https://images.fpt.shop/unsafe/fit-in/240x215/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/3/22/637835763372337463_asus-tuf-gaming-fx517-den-dd-rtx-3050.jpg'
     },
+    {
+      name:'Laptop Asus Gaming TUF FA507RM-HN018W R7',
+      category:'laptop',
+      price:2300,
+      brand:'Asus',
+      color:['Black'],
+      image:'https://images.fpt.shop/unsafe/fit-in/240x215/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/20/637992834466231416_asus-tuf-gaming-fa507-xam-dd.jpg'
+    },
+    {
+      name:'OPPO Reno8 Pro 5G 12GB - 256GB',
+      category:'Phones',
+      price:2100,
+      brand:'Oppo',
+      color:['Black'],
+      image:'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/22/637994542580983467_oppo-reno8-pro-dd.jpg'
+    },
+    {
+      name:'OPPO Reno8 4G 8GB - 256GB',
+      category:'Phones',
+      price:2300,
+      brand:'Oppo',
+      color:['Black'],
+      image:'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/5/637952895644732120_oppo-reno8-4g-dd.jpg'
+    },
+    {
+      name:'OPPO Reno7 8GB-128GB',
+      category:'Phones',
+      price:2300,
+      brand:'Oppo',
+      color:['Black'],
+      image:'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/5/4/637872590554647546_oppo-reno7-4g-dd.jpg'
+    },
+    {
+      name:'OPPO Reno7 Z 5G 8GB - 128GB',
+      category:'Phones',
+      price:2300,
+      brand:'Asus',
+      color:['Black'],
+      image:'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/2/28/637816817507294378_oppo-reno7-z-dd.jpg'
+    },
+    {
+      name:'OPPO Reno6 Z 5G ',
+      category:'Phones',
+      price:2300,
+      brand:'Asus',
+      color:['Black'],
+      image:'https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/7/8/637613342139496099_oppo-reno6z-dd.jpg'
+    },
   ]
 }
 
-export default data
+export default data;
